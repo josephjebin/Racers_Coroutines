@@ -49,6 +49,13 @@ class RaceParticipant(
     fun reset() {
         currentProgress = 0
     }
+
+    suspend fun run() {
+        while(currentProgress < maxProgress) {
+            delay(progressDelayMillis)
+            currentProgress += progressIncrement
+        }
+    }
 }
 
 /**
@@ -57,3 +64,4 @@ class RaceParticipant(
  */
 val RaceParticipant.progressFactor: Float
     get() = currentProgress / maxProgress.toFloat()
+
